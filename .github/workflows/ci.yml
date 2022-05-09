@@ -1,0 +1,39 @@
+name: dbt-trino tests
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        type:
+          - "trino"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.5"
+
+      - name: Run dbt-trino tests against ${{ matrix.type }}
+        run: make dbt-${{ matrix.type }}-tests
+
+      - name: Remove container on failure
+        if: failure()
+        run: ./docker/remove_${{ matrix.type }}.bash || true
