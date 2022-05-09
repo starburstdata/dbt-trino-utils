@@ -1,0 +1,58 @@
+name: 'trino_utils_dbt_utils_integration_tests'
+version: '1.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
+
+require-dbt-version: ">=0.20.0"
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['trino_utils_dbt_utils_integration_tests', 'trino_utils', 'dbt_utils']
+
+models:
+  dbt_utils_integration_tests:
+    +enabled: true
+
+    cross_db_utils:
+      test_datediff:
+        +enabled: false
+      test_listagg:
+        +enabled: false
+
+    datetime:
+      test_date_spine:
+        +enabled: false
+
+    generic_tests:
+      test_recency:
+        +enabled: false
+
+    materializations:
+      test_insert_by_period:
+        +enabled: false
+    
+seeds:
+  +quote_columns: false
+  dbt_utils_integration_tests:
+    cross_db:
+      data_width_bucket:
+        +column_types:
+          num_buckets: integer
+          min_value: double
+          max_value: double
+
+    schema_tests:
+      data_test_mutually_exclusive_ranges_with_gaps:
+        +enabled: false
