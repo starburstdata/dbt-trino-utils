@@ -19,6 +19,7 @@ jobs:
       matrix:
         type:
           - "trino"
+          - "starburst"
 
     steps:
       - name: Checkout
