@@ -24,7 +24,7 @@
                 table_schema like '{{ target.schema }}%'
                 and table_name not in (
                     {%- for model in current_models -%}
-                        '{{ model.upper() }}'
+                        '{{ model }}'
                         {%- if not loop.last -%}
                             ,
                         {% endif %}
@@ -35,7 +35,6 @@
         from 
             models_to_drop
         where
-            -- intentionally exclude unhandled table_types, including 'external table`
             CONCAT( 'drop ' , relation_type , ' ' , relation_name , ';' ) is not null
     {% endset %}
 

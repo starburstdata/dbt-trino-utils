@@ -6,9 +6,9 @@
         {# Fetch all schemas that use the current prefix #}
         {% do log('Fetching schemas for ' + prefix + '...', info=True) %}
         {% set schemas_table %}
-            select name
-            from sys.schemas
-            where name LIKE '{{prefix}}%'
+            select schema_name
+            from "{{ target.database }}"."information_schema"."schemata"
+            where schema_name LIKE '{{prefix}}%'
         {% endset %}
         {% set schema_names = run_query(schemas_table).columns[0].values() %}
 
