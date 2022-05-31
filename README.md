@@ -1,4 +1,4 @@
-# `dbt-trino-utils`
+# `trino_utils`
 
 This [dbt](https://github.com/dbt-labs/dbt) package contains macros 
 that:
@@ -8,7 +8,7 @@ that:
 ## Compatibility
 
 This package provides "shims" for:
-- [dbt-utils](https://github.com/dbt-labs/dbt-utils) (partial)
+- [dbt_utils](https://github.com/dbt-labs/dbt-utils) (partial)
 
 
 ## Usage
@@ -18,15 +18,15 @@ Wherever a custom trino macro exists, dbt_utils adapter dispatch will pass to tr
 ## Installation Instructions
 
 To make use of these trino adaptations in your dbt project, you must do two things:
-1. Install both and `trino-utils` and any of the compatible packages listed above by them to your `packages.yml`
+1. Install both `trino_utils` and any of the compatible packages listed above by adding them to your `packages.yml`
     ```yaml
     packages:
       - package: dbt-labs/dbt_utils 
         version: {SEE DBT HUB FOR NEWEST VERSION}
-      - package: innoverio/dbt-trino_utils
+      - package: starburstdata/trino_utils
         version: {SEE DBT HUB FOR NEWEST VERSION}
     ```
-2. Tell the supported package to also look for the `trino-utils` macros by adding the relevant `dispatches` to your `dbt_project.yml`
+2. Tell the supported package to also look for the `trino_utils` macros by adding the relevant `dispatches` to your `dbt_project.yml`
     ```yaml
     dispatch:
       - macro_namespace: dbt_utils
@@ -36,7 +36,7 @@ Check [dbt Hub](https://hub.getdbt.com) for the latest installation
 instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) 
 for more information on installing packages.
 
-## trino-utils specific macros
+## trino_utils specific macros
 
 ### Cleanup Macros
 
