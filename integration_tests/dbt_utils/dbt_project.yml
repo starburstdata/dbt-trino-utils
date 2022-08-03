@@ -28,8 +28,6 @@ models:
     cross_db_utils:
       test_datediff:
         +enabled: false
-      test_listagg:
-        +enabled: false
 
     datetime:
       test_date_spine:
