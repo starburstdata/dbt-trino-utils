@@ -1,8 +1,11 @@
 name: 'trino_utils_dbt_utils_integration_tests'
 version: '1.0'
-config-version: 2
 
-profile: 'default'
+profile: 'integration_tests'
+
+# require-dbt-version: inherit this from dbt-utils
+
+config-version: 2
 
 model-paths: ["models"]
 analysis-paths: ["analysis"]
@@ -14,8 +17,7 @@ target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
-
-require-dbt-version: ">=0.20.0"
+    - "dbt_packages"
 
 dispatch:
   - macro_namespace: dbt_utils
@@ -26,25 +28,35 @@ models:
     +enabled: true
 
     cross_db_utils:
-      test_datediff:
+      test_array_construct:
+        # weird issue with UNION vs UNION ALL
         +enabled: false
 
-    datetime:
-      test_date_spine:
+      test_datediff:
+        # tested in adapter tests
         +enabled: false
 
     generic_tests:
+      # does unsupported cast, check with dbt labs
       test_recency:
         +enabled: false
 
     materializations:
+      # requires transactional support
       test_insert_by_period:
+        +enabled: false
+
+    sql:
+      # requires natural join support, workaround leaking additional column
+      test_deduplicate:
+        +enabled: false
+      test_deduplicate_deprecated:
         +enabled: false
     
 seeds:
   +quote_columns: false
   dbt_utils_integration_tests:
-    cross_db:
+    sql:
       data_width_bucket:
         +column_types:
           num_buckets: integer
