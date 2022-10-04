@@ -28,10 +28,6 @@ models:
     +enabled: true
 
     cross_db_utils:
-      test_array_construct:
-        # weird issue with UNION vs UNION ALL
-        +enabled: false
-
       test_datediff:
         # tested in adapter tests
         +enabled: false
