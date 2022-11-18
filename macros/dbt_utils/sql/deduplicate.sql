@@ -15,6 +15,6 @@
 
     select
         distinct row_numbered.*
-    from row_numbered where row_numbered.rn <> 1
+    from row_numbered where row_numbered.rn = 1
 
 {%- endmacro -%}
