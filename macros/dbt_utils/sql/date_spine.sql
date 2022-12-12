@@ -6,7 +6,7 @@
 date_spine(
     "day",
     "to_date('01/01/2016', 'mm/dd/yyyy')",
-    "dateadd(week, 1, current_date)"
+    "dbt.dateadd(week, 1, current_date)"
 ) #}
 
 
@@ -22,7 +22,7 @@ all_periods as (
 
     select (
         {{
-            dateadd(
+            dbt.dateadd(
                 datepart,
                 "row_number() over (order by 1) - 1",
                 "cast(cast(" ~ start_date ~ " as date) as timestamp)"
