@@ -23,14 +23,14 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: 'true'
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.9.5"
+          python-version: "3.11"
 
       - name: Run dbt-trino tests against ${{ matrix.type }}
         run: make dbt-${{ matrix.type }}-tests
