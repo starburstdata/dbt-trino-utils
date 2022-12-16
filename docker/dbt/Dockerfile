@@ -11,8 +11,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/
 RUN pip3 install --upgrade pip
 RUN mkdir ${DBT_DIR}
-# TODO: change with release version
-RUN pip install git+https://github.com/starburstdata/dbt-trino.git
+RUN pip install dbt-trino==1.3
 ADD . ${DBT_DIR}
 ADD docker/dbt/profiles.yml /root/.dbt/profiles.yml
 
