@@ -1,53 +1,10 @@
-
 {% macro trino__get_tables_by_pattern_sql(schema_pattern, table_pattern, exclude='', database=target.database) %}
-
-    {% if '%' in schema_pattern %}
-        {% set schemata=trino_utils._trino__get_matching_schemata(schema_pattern, database) %}
-    {% else %}
-        {% set schemata=[schema_pattern] %}
-    {% endif %}
-
-    {% set sql %}
-        {% for schema in schemata %}
-            select distinct
-                table_schema,
-                table_name,
-                {{ dbt_utils.get_table_types_sql() }}
-
-            from {{ adapter.quote(database) }}.INFORMATION_SCHEMA.TABLES
-            where lower(table_name) like lower ('{{ table_pattern }}')
-                and lower(table_name) not like lower ('{{ exclude }}')
-                and table_schema = '{{ schema }}'
-
-            {% if not loop.last %} union all {% endif %}
-
-        {% endfor %}
-    {% endset %}
-
-    {{ return(sql) }}
-
-{% endmacro %}
-
-
-{% macro _trino__get_matching_schemata(schema_pattern, database) %}
-    {% if execute %}
-
-        {% set sql %}
-        select schema_name from {{ adapter.quote(database) }}.INFORMATION_SCHEMA.SCHEMATA
-        where lower(schema_name) like lower('{{ schema_pattern }}')
-        {% endset %}
-
-        {% set results=run_query(sql) %}
-
-        {% set schemata=results.columns['schema_name'].values() %}
-
-        {{ return(schemata) }}
-
-    {% else %}
-
-        {{ return([]) }}
-
-    {% endif %}
-
-
+    select distinct
+        table_schema as {{ adapter.quote('table_schema') }},
+        table_name as {{ adapter.quote('table_name') }},
+        {{ dbt_utils.get_table_types_sql() }}
+    from {{ database }}.information_schema.tables
+    where lower(table_schema) like lower('{{ schema_pattern }}')
+    and lower(table_name) like lower('{{ table_pattern }}')
+    and lower(table_name) not like lower('{{ exclude }}')
 {% endmacro %}
