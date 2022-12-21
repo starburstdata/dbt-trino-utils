@@ -36,6 +36,27 @@ Check [dbt Hub](https://hub.getdbt.com) for the latest installation
 instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) 
 for more information on installing packages.
 
+## Updating dbt-utils submodule
+
+If new version of dbt-utils is released, and you want to use it, update instruction below.
+Remember to always point HEAD to certain tag in this submodule, never leave HEAD pointing to any branch.
+
+1. `cd dbt-utils` go to dbt-utils submodule directory
+2. `git switch main` switch to main branch
+3. `git fetch --tags` fetch tags from dbt-utils remote
+4. `git switch 1.0.0 --detach` switch to tag with certain version to which you want upgrade, here 1.0.0 for example
+5. `cd ..` go to dbt-trino-utils top directory. Commit, push this change to dbt-trino-utils remote.
+
+## Release process
+
+1. [Create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) of github repository. Use [semantic versioning](https://semver.org/) to give an appriopiate version number.
+Don't try to match [dbt-utils](https://github.com/dbt-labs/dbt-utils/releases) version number, as at some point these versions' numbers won't be equal anyway, that's inevitable. Just follow semantic versioning.
+Remember to add appropriate release notes (changelog, contributors).
+2. Wait for adding your new release to [dbt Hub](https://hub.getdbt.com/).
+It is done automatically by dbt-labs script [Hubcap](https://github.com/dbt-labs/hubcap#hubcap).
+Check on [trino_utils package site](https://hub.getdbt.com/starburstdata/trino_utils/latest/) if new version is available. It should happen within one business day.
+3. Announce new release on dbt slack, at [db-presto-trino](https://getdbt.slack.com/archives/CNNPBQ24R) channel.
+
 ## trino_utils specific macros
 
 ### Cleanup Macros
