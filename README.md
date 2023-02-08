@@ -31,6 +31,8 @@ To make use of these trino adaptations in your dbt project, you must do two thin
     dispatch:
       - macro_namespace: dbt_utils
         search_order: ['trino_utils', 'dbt_utils']
+      - macro_namespace: metrics
+        search_order: ['dbt_trino_metrics', 'metrics']
     ```
 Check [dbt Hub](https://hub.getdbt.com) for the latest installation 
 instructions, or [read the docs](https://docs.getdbt.com/docs/package-management) 
