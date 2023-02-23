@@ -4,3 +4,6 @@
 [submodule "dbt-date"]
 	path = dbt-date
 	url = https://github.com/calogica/dbt-date.git
+[submodule "dbt-expectations"]
+	path = dbt-expectations
+	url = git@github.com:calogica/dbt-expectations.git
