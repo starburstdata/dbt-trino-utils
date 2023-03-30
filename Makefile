@@ -3,6 +3,7 @@ dbt-trino-tests:
 	./docker/dbt/build.sh
 	./docker/init_trino.bash
 	./docker/run_dbt_utils_integration_tests.bash
+	./docker/run_dbt_date_integration_tests.bash
 	./docker/remove_trino.bash
 
 dbt-starburst-tests:
@@ -10,4 +11,5 @@ dbt-starburst-tests:
 	./docker/dbt/build.sh
 	./docker/init_starburst.bash
 	./docker/run_dbt_utils_integration_tests.bash
+	./docker/run_dbt_date_integration_tests.bash
 	./docker/remove_starburst.bash

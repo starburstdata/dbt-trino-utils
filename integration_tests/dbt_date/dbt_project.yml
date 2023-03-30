@@ -1,0 +1,47 @@
+name: "trino_utils_dbt_date_integration_tests"
+version: "1.0"
+
+profile: "integration_tests"
+
+config-version: 2
+
+model-paths: ["models"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_modules", "dbt_packages"]
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['trino_utils_dbt_utils_integration_tests', 'trino_utils', 'dbt_utils']
+  - macro_namespace: dbt_date
+    search_order: ['trino_utils_dbt_date_integration_tests', 'trino_utils', 'dbt_date']
+
+vars:
+    "dbt_date:time_zone": "UTC"
+
+quoting:
+    database: false
+    identifier: false
+    schema: false
+
+models:
+  dbt_date_integration_tests:
+    schema: dbt_date_integration_tests
+    materialized: table
+
+    # TODO: Enable tests while adding Trino shims
+    dates:
+      +enabled: false
+    dim_date:
+      +enabled: false
+    dim_date_fiscal:
+      +enabled: false
+    dim_hour:
+      +enabled: false
+    dim_week:
+      +enabled: false
+    test_dates:
+      +enabled: false
