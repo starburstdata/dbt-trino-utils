@@ -42,6 +42,6 @@ models:
     dim_hour:
       +enabled: false
     dim_week:
-      +enabled: false
+      +enabled: true
     test_dates:
       +enabled: false
