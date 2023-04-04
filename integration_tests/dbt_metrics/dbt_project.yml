@@ -1,0 +1,70 @@
+name: "trino_utils_dbt_metrics_integration_tests"
+version: "1.0.0"
+config-version: 2
+
+profile: "integration_tests"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+  - "logs"
+
+dispatch:
+  - macro_namespace: metrics
+    search_order: ['trino_utils_dbt_metrics_integration_tests', 'trino_utils', 'metrics']
+
+models:
+
+  dbt_metrics_integration_tests:
+
+    # Overridden by trino_custom_calendar
+    custom_calendar:
+      +enabled: false
+
+    metric_testing_models:
+      +materialized: table
+
+      # no median function in Trino
+      base_median_metric:
+        +enabled: false
+      base_median_metric_no_time_grain:
+        +enabled: false
+
+      # no 'is true' predicate in trino
+      base_count_distinct_metric:
+        +enabled: false
+      derived_metric:
+        +enabled: false
+
+      # TODO: Fix and enable
+      base_count_metric__secondary_calculations:
+        +enabled: false
+      base_sum_metric__prior:
+        +enabled: false
+      multiple_metrics__period_over_period:
+        +enabled: false
+      multiple_metrics__period_to_date:
+        +enabled: false
+      multiple_metrics__rolling:
+        +enabled: false
+      # issue with base_sum_metric.yml
+      # with config: restrict_no_time_grain
+      base_sum_metric:
+        +enabled: false
+      ratio_metric:
+        +enabled: false
+
+    materialized_models:
+      +materialized: table
+
+vars:
+  dbt_metrics_calendar_model: trino_custom_calendar
+  custom_calendar_dimension_list: ["is_weekend"]
