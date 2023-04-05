@@ -23,9 +23,13 @@ dispatch:
 
 models:
 
+  trino_utils_dbt_metrics_integration_tests:
+    metric_testing_models:
+      +materialized: table
+
   dbt_metrics_integration_tests:
 
-    # Overridden by trino_custom_calendar
+    # Overridden by trino__custom_calendar
     custom_calendar:
       +enabled: false
 
@@ -42,6 +46,13 @@ models:
       base_count_distinct_metric:
         +enabled: false
       derived_metric:
+        +enabled: false
+
+      # Overridden by trino__develop_metric
+      develop_metric:
+        +enabled: false
+      # Overridden by trino__simple_develop_metric
+      simple_develop_metric:
         +enabled: false
 
       # TODO: Fix and enable
@@ -66,5 +77,5 @@ models:
       +materialized: table
 
 vars:
-  dbt_metrics_calendar_model: trino_custom_calendar
+  dbt_metrics_calendar_model: trino__custom_calendar
   custom_calendar_dimension_list: ["is_weekend"]

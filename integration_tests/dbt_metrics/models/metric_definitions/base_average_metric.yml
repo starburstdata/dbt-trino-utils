@@ -1,0 +1,12 @@
+version: 2 
+metrics:
+  - name: base_average_metric
+    model: ref('trino__fact_orders')
+    label: Total Discount ($)
+    timestamp: order_date
+    time_grains: [day, week, month, test]
+    calculation_method: average
+    expression: discount_total
+    dimensions:
+      - had_discount
+      - order_country
