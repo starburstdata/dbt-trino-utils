@@ -1,0 +1,4 @@
+packages:
+  - local: ../../
+  - local: ../../dbt-project-evaluator
+  - local: ../../dbt-project-evaluator/integration_tests
