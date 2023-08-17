@@ -47,6 +47,11 @@ models:
 tests:
   dbt_project_evaluator:
     +enabled: false
+  dbt_project_evaluator_integration_tests:
+    dag:
+      # Overridden by trino__equality_fct_duplicate_sources
+      equality_fct_duplicate_sources:
+        +enabled: false
 
 seeds:
   dbt_project_evaluator:
