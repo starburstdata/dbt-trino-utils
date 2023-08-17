@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: trino__test_fct_duplicate_sources
+    tests:
+      - dbt_utils.equality:
+          name: trino__equality_fct_duplicate_sources
+          compare_model: ref('trino__fct_duplicate_sources')
+          compare_columns:
+            - source_names
