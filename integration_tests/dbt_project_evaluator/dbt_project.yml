@@ -62,6 +62,10 @@ seeds:
       # Overridden by trino__test_fct_test_coverage
       test_fct_test_coverage:
         +enabled: false
+    docs:
+      # Overridden by trino__test_fct_documentation_coverage
+      test_fct_documentation_coverage:
+        +enabled: false
 
 vars:
   # -- Performance variables --
