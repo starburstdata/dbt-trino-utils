@@ -1,2 +1,6 @@
 fct_name,column_name,id_to_exclude,comment
 fct_direct_join_to_source,parent,stg_model_1,This is actually OK because...
+trino__fct_model_naming_conventions,resource_name,trino__fct_model_naming_conventions,Trino shim model
+trino__fct_model_naming_conventions,resource_name,trino__fct_duplicate_sources,Trino shim model
+trino__fct_model_naming_conventions,resource_name,trino__fct_source_fanout,Trino shim model
+trino__fct_model_naming_conventions,resource_name,trino__fct_model_fanout,Trino shim model
