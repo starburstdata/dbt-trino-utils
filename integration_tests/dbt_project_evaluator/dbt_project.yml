@@ -58,6 +58,9 @@ seeds:
     dbt_project_evaluator_exceptions:
       +enabled: false
   dbt_project_evaluator_integration_tests:
+    # Overridden by trino__dbt_project_evaluator_exceptions
+    dbt_project_evaluator_exceptions:
+      +enabled: false
     tests:
       # Overridden by trino__test_fct_test_coverage
       test_fct_test_coverage:
