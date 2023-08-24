@@ -43,6 +43,10 @@ models:
         fct_documentation_coverage:
           # materialize as a table to ensure SQL query runs successfully
           +materialized: table
+      structure:
+        # Overridden by trino__fct_model_naming_conventions
+        fct_model_naming_conventions:
+          +enabled: false
 
 tests:
   dbt_project_evaluator:
@@ -51,6 +55,10 @@ tests:
     dag:
       # Overridden by trino__equality_fct_duplicate_sources
       equality_fct_duplicate_sources:
+        +enabled: false
+    structure:
+      # Overridden by trino__equality_fct_model_naming_conventions
+      equality_fct_model_naming_conventions:
         +enabled: false
 
 seeds:
@@ -68,6 +76,10 @@ seeds:
     docs:
       # Overridden by trino__test_fct_documentation_coverage
       test_fct_documentation_coverage:
+        +enabled: false
+    structure:
+      # Overridden by trino__test_fct_model_naming_conventions
+      test_fct_model_naming_conventions:
         +enabled: false
 
 vars:
