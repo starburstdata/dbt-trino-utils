@@ -33,6 +33,11 @@ models:
   dbt_project_evaluator_integration_tests:
     # materialize as ephemeral to prevent the fake models from executing, but keep them enabled
     +materialized: ephemeral
+    marts:
+      intermediate:
+        to_exclude:
+          # Overridden by trino_utils_dbt_project_evaluator_integration_tests to_exclude
+          +enabled: false
   dbt_project_evaluator:
     marts:
       tests:
@@ -83,6 +88,8 @@ seeds:
         +enabled: false
 
 vars:
+  exclude_paths_from_project: ["/to_exclude/"]
+
   # -- Performance variables --
   chained_views_threshold: 3
 
