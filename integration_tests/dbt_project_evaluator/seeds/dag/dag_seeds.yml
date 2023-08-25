@@ -8,3 +8,13 @@ seeds:
           compare_model: ref('trino__fct_duplicate_sources')
           compare_columns:
             - source_names
+
+  - name: trino__test_fct_model_fanout
+    tests:
+      - dbt_utils.equality:
+          name: trino__equality_fct_model_fanout
+          compare_model: ref('trino__fct_model_fanout')
+          compare_columns:
+            - parent
+            - parent_model_type
+            - leaf_children
