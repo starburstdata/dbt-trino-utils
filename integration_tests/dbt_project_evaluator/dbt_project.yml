@@ -74,6 +74,10 @@ tests:
       # Overridden by trino__equality_fct_model_naming_conventions
       equality_fct_model_naming_conventions:
         +enabled: false
+    performance:
+      # Overridden by trino__equality_fct_chained_views_dependencies
+      equality_fct_chained_views_dependencies:
+        +enabled: false
 
 seeds:
   dbt_project_evaluator:
@@ -98,6 +102,10 @@ seeds:
     dag:
       # Overridden by trino__test_fct_model_fanout
       test_fct_model_fanout:
+        +enabled: false
+    performance:
+      # Overridden by trino__test_fct_chained_views_dependencies
+      test_fct_chained_views_dependencies:
         +enabled: false
 
 sources:
