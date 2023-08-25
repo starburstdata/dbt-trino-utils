@@ -8,3 +8,4 @@ fct_missing_primary_key_tests,resource_name,trino__fct_duplicate_sources,Trino s
 fct_missing_primary_key_tests,resource_name,trino__fct_model_naming_conventions,Trino shim model
 fct_missing_primary_key_tests,resource_name,trino__fct_source_fanout,Trino shim model
 fct_missing_primary_key_tests,resource_name,trino__fct_model_fanout,Trino shim model
+fct_root_models,child,trino__fct_duplicate_sources,Trino shim model
