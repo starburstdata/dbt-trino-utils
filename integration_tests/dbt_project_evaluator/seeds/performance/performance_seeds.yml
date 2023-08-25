@@ -1,0 +1,12 @@
+version: 2
+
+seeds:
+  - name: trino__test_fct_chained_views_dependencies
+    tests:
+      - dbt_utils.equality:
+          name: trino__equality_fct_chained_views_dependencies
+          compare_model: ref('fct_chained_views_dependencies')
+          compare_columns:
+            - parent
+            - child
+            - distance
