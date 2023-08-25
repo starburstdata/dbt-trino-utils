@@ -100,11 +100,19 @@ seeds:
       test_fct_model_fanout:
         +enabled: false
 
+sources:
+  dbt_project_evaluator_integration_tests:
+    staging:
+      source_1:
+        # Overridden by trino__source_4
+        source_3:
+          +enabled: false
+
 vars:
   # -- DAG variables --
   models_fanout_threshold: 3
 
-  exclude_paths_from_project: ["/to_exclude/"]
+  exclude_paths_from_project: ["/to_exclude/","trino__source_4.trino__table_6"]
 
   # -- Performance variables --
   chained_views_threshold: 3
