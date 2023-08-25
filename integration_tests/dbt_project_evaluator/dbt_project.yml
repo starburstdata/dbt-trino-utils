@@ -52,6 +52,10 @@ models:
         # Overridden by trino__fct_model_naming_conventions
         fct_model_naming_conventions:
           +enabled: false
+      dag:
+        # Overridden by trino__fct_model_fanout
+        fct_model_fanout:
+          +enabled: false
 
 tests:
   dbt_project_evaluator:
@@ -60,6 +64,9 @@ tests:
     dag:
       # Overridden by trino__equality_fct_duplicate_sources
       equality_fct_duplicate_sources:
+        +enabled: false
+      # Overridden by trino__equality_fct_model_fanout
+      equality_fct_model_fanout:
         +enabled: false
     structure:
       # Overridden by trino__equality_fct_model_naming_conventions
@@ -86,8 +93,15 @@ seeds:
       # Overridden by trino__test_fct_model_naming_conventions
       test_fct_model_naming_conventions:
         +enabled: false
+    dag:
+      # Overridden by trino__test_fct_model_fanout
+      test_fct_model_fanout:
+        +enabled: false
 
 vars:
+  # -- DAG variables --
+  models_fanout_threshold: 3
+
   exclude_paths_from_project: ["/to_exclude/"]
 
   # -- Performance variables --
