@@ -38,6 +38,8 @@ models:
         to_exclude:
           # Overridden by trino_utils_dbt_project_evaluator_integration_tests to_exclude
           +enabled: false
+      fct_model_6:
+        +materialized: table
   dbt_project_evaluator:
     marts:
       tests:
