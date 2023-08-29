@@ -55,6 +55,9 @@ models:
         fct_model_naming_conventions:
           +enabled: false
       dag:
+        # Overridden by trino__fct_source_fanout
+        fct_source_fanout:
+          +enabled: false
         # Overridden by trino__fct_model_fanout
         fct_model_fanout:
           +enabled: false
@@ -66,6 +69,9 @@ tests:
     dag:
       # Overridden by trino__equality_fct_duplicate_sources
       equality_fct_duplicate_sources:
+        +enabled: false
+      # Overridden by trino__equality_fct_source_fanout
+      equality_fct_source_fanout:
         +enabled: false
       # Overridden by trino__equality_fct_model_fanout
       equality_fct_model_fanout:
@@ -100,6 +106,9 @@ seeds:
       test_fct_model_naming_conventions:
         +enabled: false
     dag:
+      # Overridden by trino__test_fct_source_fanout
+      test_fct_source_fanout:
+        +enabled: false
       # Overridden by trino__test_fct_model_fanout
       test_fct_model_fanout:
         +enabled: false
