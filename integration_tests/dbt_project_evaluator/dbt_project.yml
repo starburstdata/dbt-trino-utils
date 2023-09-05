@@ -61,6 +61,9 @@ models:
         # Overridden by trino__fct_model_fanout
         fct_model_fanout:
           +enabled: false
+        # Overridden by trino__fct_multiple_sources_joined
+        fct_multiple_sources_joined:
+          +enabled: false
 
 tests:
   dbt_project_evaluator:
@@ -75,6 +78,9 @@ tests:
         +enabled: false
       # Overridden by trino__equality_fct_model_fanout
       equality_fct_model_fanout:
+        +enabled: false
+      # Overridden by trino__equality_fct_multiple_sources_joined
+      equality_fct_multiple_sources_joined:
         +enabled: false
     structure:
       # Overridden by trino__equality_fct_model_naming_conventions
@@ -111,6 +117,9 @@ seeds:
         +enabled: false
       # Overridden by trino__test_fct_model_fanout
       test_fct_model_fanout:
+        +enabled: false
+      # Overridden by trino__test_fct_multiple_sources_joined
+      test_fct_multiple_sources_joined:
         +enabled: false
     performance:
       # Overridden by trino__test_fct_chained_views_dependencies
