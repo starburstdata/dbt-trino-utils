@@ -1,7 +1,0 @@
-version: 2
-
-sources:
-  - name: trino__source_4
-    schema: real_schema_3
-    tables:
-      - name: trino__table_6

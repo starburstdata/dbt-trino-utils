@@ -7,6 +7,3 @@
 [submodule "dbt_metrics"]
 	path = dbt_metrics
 	url = https://github.com/dbt-labs/dbt_metrics.git
-[submodule "dbt-project-evaluator"]
-	path = dbt-project-evaluator
-	url = https://github.com/dbt-labs/dbt-project-evaluator.git
