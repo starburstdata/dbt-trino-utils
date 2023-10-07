@@ -1,5 +1,6 @@
 
 packages:
   - local: ../../
+  - local: ../../dbt-utils
   - local: ../../dbt-expectations
   - local: ../../dbt-expectations/integration_tests
