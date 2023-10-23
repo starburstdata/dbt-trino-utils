@@ -52,3 +52,4 @@ models:
   dbt_expectations_integration_tests:
     +schema: dbt_expectations_integration_tests
     +materialized: table
+  

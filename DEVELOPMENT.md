@@ -1,16 +1,17 @@
-## Contributing
+# Contributing
 
-### Adding new macros
+## Adding new macros
 The `macros` directory contains a subdirectory for each package that is supported by this package.
 Each subdirectory contains a file for each macro that is supported by this package.
 
-### Creating tests
+## Creating tests
 If you are overriding a package macro, you should create a test that ensures that the package macro is called when the dispatch macro is called.
 It might be a good idea to just run all the tests that the original package has so that you can ensure compatibility.
-The way you do that is by copying the integration tests from the original package into the integration tests directory of this package.
+The way you do that is by creating a submodule out of the package you are overriding macros for then importing it and its own integrations tests in your `packages.yml` file.
+If some of the tests require shims to get them to work in trino please disable those tests and create a new test that works with the shim.
 Then you can run the tests locally to ensure that they pass.
 
-### Running tests
+## Running tests
 
 If you want to run tests on this package locally you can do so by running the trino and starburst docker compose files. 
 Pre-requisites:
@@ -54,6 +55,7 @@ integration_tests:
 From the `integration_tests/{dbt_project_name}/` directory run:
 
 ```bash
+dbt deps
 dbt run
 dbt test
 ```

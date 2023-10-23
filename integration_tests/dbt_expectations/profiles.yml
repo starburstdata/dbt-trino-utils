@@ -1,0 +1,17 @@
+config:
+    send_anonymous_usage_stats: False
+    use_colors: True
+
+integration_tests:
+  target: trino
+  outputs:
+    trino:
+      type: trino
+      host: localhost
+      port: 8080
+      method: none
+      user: trino
+      catalog: memory
+      http_scheme: http
+      schema: default
+      threads: 1
